@@ -1,4 +1,4 @@
-# HTB - Appointment 🩺
+# HTB - Appointment 
 
 ## 📌 Objective
 
