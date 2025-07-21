@@ -11,7 +11,8 @@ The objective is to analyze the machine that HTB provides us to see possible vul
 - SQL injection
 
 ## 📂 Included Files
-- HTB_Writer_Walkthrough.md
+- `scan_results.txt`: scan output
+- `useful_commands.txt`: commented Nmap, Gobuster & SQL injection commands
 - `images/`: screenshots from the process
 
 ## 📡 Main Command Used
