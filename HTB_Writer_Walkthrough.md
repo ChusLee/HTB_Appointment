@@ -60,7 +60,7 @@ This allows **bypass de autenticación**, logging in as the administrator user.
 
 ---
 
-## 🛡️ HTB Task
+## HTB Task
 ![Task](images/Task123.png)
 ![Task](images/Task456.png)
 ![Task](images/Task78.png)
