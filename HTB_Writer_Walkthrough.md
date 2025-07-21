@@ -26,6 +26,7 @@ sudo nmap -sC -sV <IP_target>
 
 We access the HTTP service by navigating to the target IP address from the browser. A simple web interface is displayed, suggesting a possible web injection attack vector.
 
+![Web](images/login.png)
 ---
 
 ## 🗂️ 3. Brute force directories with Gobuster
