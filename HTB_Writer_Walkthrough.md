@@ -38,8 +38,8 @@ gobuster dir -u http://<IP_target> -w /usr/share/wordlists/dirb/common.txt
 
 **Result:**
 No useful directories are discovered. The attack yields no relevant information.
-![Gobuster](imagenes/gobuster_help.png)
-![Gobuster](imagenes/gobuster_com.png)
+![Gobuster](images/gobuster_help.png)
+![Gobuster](images/gobuster_com.png)
 
 ---
 
@@ -56,7 +56,7 @@ Explanation:
 
 This allows **bypass de autenticación**, logging in as the administrator user.
 
-![SQLi login](imagenes/SQL_injection_result.png)
+![SQLi login](images/SQL_injection_result.png)
 
 ---
 
