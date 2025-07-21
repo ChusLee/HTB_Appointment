@@ -1,85 +1,73 @@
 # HTB - Appointment 🩺
 
-## 📌 Objetivo
+## 📌 Objective
 
-Explotar la máquina "Appointment" de Hack The Box utilizando técnicas de reconocimiento, enumeración y SQL Injection para obtener la flag.
+Exploit the Hack The Box "Appointment" machine using reconnaissance, enumeration, and SQL injection techniques to obtain the flag.
 
 ---
 
-## 🔍 1. Enumeración con Nmap
+## 🔍 1. Enumeration with Nmap
 
-Ejecutamos un escaneo básico con scripts NSE y detección de versiones:
+We run a basic scan with NSE scripts and version detection:
 
 ```bash
 sudo nmap -sC -sV <IP_target>
 ```
 
-**Resultado:**
-- Puerto 80 abierto
-- Servicio: HTTP (Apache 2.4.38)
+**Result:**
+- Port 80 open
+- Service: HTTP (Apache 2.4.38)
 
-![Nmap Scan](imagenes/nmap_scan.png)
-
----
-
-## 🌐 2. Navegación al servicio web
-
-Accedemos al servicio HTTP navegando a la IP objetivo desde el navegador. Se muestra una interfaz web simple, lo que sugiere posible vector de ataque por inyección web.
+![Nmap Scan](images/nmap.png)
 
 ---
 
-## 🗂️ 3. Fuerza bruta de directorios con Gobuster
+## 🌐 2. Navigation to the web service
 
-Se ejecuta Gobuster para descubrir directorios ocultos o sensibles:
+We access the HTTP service by navigating to the target IP address from the browser. A simple web interface is displayed, suggesting a possible web injection attack vector.
+
+---
+
+## 🗂️ 3. Brute force directories with Gobuster
+
+Run Gobuster to discover hidden or sensitive directories:
 
 ```bash
 gobuster dir -u http://<IP_target> -w /usr/share/wordlists/dirb/common.txt
 ```
 
-**Resultado:**
-No se descubren directorios útiles. El ataque no da información relevante.
-
-![Gobuster](imagenes/gobuster_result.png)
-
----
-
-## 🛡️ 4. Explotación con SQL Injection
-
-Dado que el puerto 80 sirve una aplicación web, se prueba una **inyección SQL clásica**:
-
-- Usuario: `admin'#`
-- Contraseña: `abc123` (el valor es irrelevante)
-
-Explicación:
-- `'` cierra la cadena SQL
-- `#` convierte el resto de la línea en comentario (en MySQL/PHP)
-
-Esto permite el **bypass de autenticación**, accediendo como usuario administrador.
-
-![SQLi login](imagenes/sqli_login.png)
+**Result:**
+No useful directories are discovered. The attack yields no relevant information.
+![Gobuster](imagenes/gobuster_help.png)
+![Gobuster](imagenes/gobuster_com.png)
 
 ---
 
-## 🏁 5. Obtención de la flag
+## 🛡️ 4. Exploitation with SQL Injection and CTF
 
-Una vez dentro del sistema, la flag se muestra o se puede encontrar fácilmente tras la autenticación exitosa.
+Since port 80 serves a web application, a classic SQL injection is tested:
 
-```bash
-cat /root/root.txt
-```
+- User: `admin'#`
+- Password: `abc123` (the value is irrelevant)
 
-![Flag obtenida](imagenes/flag.png)
+Explanation:
+- `'` closes the SQL string
+- `#` comments out the rest of the line (in MySQL/PHP)
 
----
+This allows **bypass de autenticación**, logging in as the administrator user.
 
-## ✅ Conclusiones
-
-- Enumeración con `nmap` y `gobuster` nos dio visibilidad inicial.
-- La web era vulnerable a SQL Injection básica.
-- Con una sola inyección fue posible acceder como administrador y capturar la flag.
-- La importancia de validar y filtrar entradas del usuario queda demostrada.
+![SQLi login](imagenes/SQL_injection_result.png)
 
 ---
 
-**Autor**: [Tu Nombre o Alias]  
-**HTB Username**: [Tu usuario en Hack The Box]  
+
+## ✅ Conclusions
+
+- Enumeration with `nmap` and `gobuster` gave us initial visibility.
+- The website was vulnerable to basic SQL injection.
+- With a single injection, it was possible to gain administrator access and capture the flag.
+- The importance of validating and filtering user input is demonstrated.
+---
+
+**Autor**: [Jesús]  
+**HTB Username**: [JMCA]  
